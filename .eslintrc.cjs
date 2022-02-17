@@ -1,4 +1,4 @@
 module.exports = {
   root: true,
-  extends: ['@tinkin', '@tikin/eslint-config/react'],
+  extends: ['@tinkin', '@tinkin/eslint-config/react'],
 };
