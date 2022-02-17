@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import { Snackbar } from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
 
-import { AlertState } from './utils';
-
-const AlertComponent = props => {
+const AlertComponent = (props: any) => {
   const { alertState, setAlertState } = props;
   return (
     <Snackbar
