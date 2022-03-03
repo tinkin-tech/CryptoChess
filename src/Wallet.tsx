@@ -16,7 +16,6 @@ import {
   mintOneToken,
 } from './candy-machine';
 import { AlertState } from './utils';
-import { Header } from './Header';
 import { MintButton } from './MintButton';
 import { GatewayProvider } from '@civic/solana-gateway-react';
 
@@ -171,7 +170,6 @@ const Wallet = (props: WalletProps) => {
             <ConnectButton>Connect Wallet</ConnectButton>
           ) : (
             <>
-              <Header candyMachine={candyMachine} />
               <MintContainer>
                 {candyMachine?.state.isActive &&
                 candyMachine?.state.gatekeeper &&

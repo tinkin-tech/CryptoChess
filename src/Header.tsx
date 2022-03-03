@@ -1,76 +1,33 @@
 import * as anchor from '@project-serum/anchor';
 
+import {Theme, makeStyles} from '@material-ui/core'
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import { MintCountdown } from './MintCountdown';
-import { toDate, formatNumber } from './utils';
-import { CandyMachineAccount } from './candy-machine';
 
-type HeaderProps = {
-  candyMachine?: CandyMachineAccount;
-};
+import Chess from './assets/icon.png'
 
-export const Header = ({ candyMachine }: HeaderProps) => {
+const useStyles = makeStyles((theme: Theme) => ({
+  item: {
+    color: '#85591F',
+    fontSize: 12,
+    alignItems: 'center',
+    display: 'flex',
+    fontFamily: 'Press Start 2P',
+  },
+  img: {
+    marginRight: 8,
+    maxHeight: 32
+  },
+}))
+
+export const Header = () => {
+  const classes = useStyles()
+
   return (
-    <Grid container direction="row" justifyContent="center" wrap="nowrap">
-      <Grid container direction="row" wrap="nowrap">
-        {candyMachine && (
-          <Grid container direction="row" wrap="nowrap">
-            <Grid container direction="column">
-              <Typography variant="body2" color="textSecondary">
-                Remaining
-              </Typography>
-              <Typography
-                variant="h6"
-                color="textPrimary"
-                style={{
-                  fontWeight: 'bold',
-                }}
-              >
-                {`${candyMachine?.state.itemsRemaining}`}
-              </Typography>
-            </Grid>
-            <Grid container direction="column">
-              <Typography variant="body2" color="textSecondary">
-                Price
-              </Typography>
-              <Typography
-                variant="h6"
-                color="textPrimary"
-                style={{ fontWeight: 'bold' }}
-              >
-                {getMintPrice(candyMachine)}
-              </Typography>
-            </Grid>
-          </Grid>
-        )}
-        <MintCountdown
-          date={toDate(
-            candyMachine?.state.goLiveDate
-              ? candyMachine?.state.goLiveDate
-              : candyMachine?.state.isPresale
-              ? new anchor.BN(new Date().getTime() / 1000)
-              : undefined,
-          )}
-          style={{ justifyContent: 'flex-end' }}
-          status={
-            !candyMachine?.state?.isActive || candyMachine?.state?.isSoldOut
-              ? 'COMPLETED'
-              : candyMachine?.state.isPresale
-              ? 'PRESALE'
-              : 'LIVE'
-          }
-        />
+    <Grid container direction="row" justifyContent="flex-start" alignItems='center' wrap="nowrap" spacing={2}>
+      <Grid item className={classes.item}>
+        <img src={Chess} alt='chess icon' className={classes.img} />
+        CRYPTOCHESS
       </Grid>
     </Grid>
   );
-};
-
-const getMintPrice = (candyMachine: CandyMachineAccount): string => {
-  const price = formatNumber.asNumber(
-    candyMachine.state.isPresale && candyMachine.state.whitelistMintSettings?.discountPrice
-      ? candyMachine.state.whitelistMintSettings?.discountPrice!
-      : candyMachine.state.price!,
-  );
-  return `◎ ${price}`;
 };
