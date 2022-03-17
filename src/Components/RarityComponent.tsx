@@ -40,15 +40,35 @@ const useStyles = makeStyles((theme: Theme) => ({
     // backgroundColor: theme.palette.background.paper,
   },
   tabs: {
-    // backgroundColor: '#f5f5f5',
+      backgroundColor: '#FFFFFF',
+      "& .MuiTabs-indicator": {
+        backgroundColor: "#2B434F",
+      },
+      "& .MuiTab-textColorInherit":{
+        color: '#C3CAD7',
+        // opacity: '0.35'
+      },
+      "& .MuiTab-root":{
+        textTransform: 'none'
+      },
+      "& .Mui-selected":{
+        color: '#2B434F',
+        fontWeight: 'bold',
+        opacity: '1'
+      }
   },
+  appbar: {
+    boxShadow: 'none',
+    elevation: 0,
+  },
+
 }));
 
 const RarityComponent = () => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
   const handleChange = (event: React.ChangeEvent<any>, newValue: number) => {
-    console.log({ newValue });
+    // console.log({ newValue });
     setValue(newValue);
   };
 
@@ -61,18 +81,19 @@ const RarityComponent = () => {
 
   return (
     <div className={classes.root}>
-      <AppBar position='static'>
+      <AppBar position='static' className={classes.appbar}>
         <Tabs
           value={value}
           onChange={handleChange}
           aria-label='simple tabs example'
+          className={classes.tabs}
         >
           <Tab label='King' {...a11yProps(0)} />
           <Tab label='Queen' {...a11yProps(1)} />
           <Tab label='Knight' {...a11yProps(2)} />
           <Tab label='Castle' {...a11yProps(3)} />
           <Tab label='Bishop' {...a11yProps(4)} />
-          <Tab label='Pawn' {...a11yProps(5)} className={classes.tabs} />
+          <Tab label='Pawn' {...a11yProps(5)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
