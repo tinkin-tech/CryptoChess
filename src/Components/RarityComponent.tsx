@@ -41,13 +41,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   tabs: {
     // backgroundColor: '#f5f5f5',
-  }
+  },
 }));
 
 const RarityComponent = () => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
   const handleChange = (event: React.ChangeEvent<any>, newValue: number) => {
+    console.log({ newValue });
     setValue(newValue);
   };
 
@@ -62,7 +63,7 @@ const RarityComponent = () => {
     <div className={classes.root}>
       <AppBar position='static'>
         <Tabs
-          value={value ?? 0}
+          value={value}
           onChange={handleChange}
           aria-label='simple tabs example'
         >
