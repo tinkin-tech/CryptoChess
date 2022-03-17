@@ -20,6 +20,8 @@ import { WalletDialogProvider } from '@solana/wallet-adapter-material-ui';
 
 import { ThemeProvider, createTheme } from '@material-ui/core';
 
+import './global.css'
+
 const theme = createTheme({
   palette: {
     type: 'light',
