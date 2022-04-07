@@ -6,17 +6,17 @@ import { Header } from './Header'
 import ChessBg from './assets/chessbg.svg'
 import Cloud from './assets/cloud.png'
 
-import { ReactComponent as Alfil } from './assets/alfil.svg'
-import { ReactComponent as Caballo } from './assets/caballo.svg'
+import { ReactComponent as Bishop } from './assets/alfil.svg'
+import { ReactComponent as Horse } from './assets/caballo.svg'
 import { ReactComponent as Heart1 } from './assets/heart1.svg'
 import { ReactComponent as Heart2 } from './assets/heart2.svg'
 import { ReactComponent as Peon } from './assets/peon.svg'
-import { ReactComponent as Qeen } from './assets/qeen.svg'
+import { ReactComponent as Queen } from './assets/queen.svg'
+import Timer from './Components/Timer'
 
 const MainContainer = styled(Container)(() => ({
   backgroundImage: `url(${ChessBg})`,
-  minWidth: '100vw',
-  // minHeight: '100vh',
+  minWidth: '100%',
   minHeight: 1080,
   margin: 0,
 }));
@@ -40,12 +40,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontWeight: 400,
     marginBottom: 32,
   },
-  Alfil: {
+  Bishop: {
     position: 'absolute',
     top: 380,
     right: 200,
   },
-  Caballo: {
+  Horse: {
     position: 'absolute',
     top: 300,
     right: 420,
@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     top: 300,
     right: 0,
   },
-  Qeen: {
+  Queen: {
     position: 'absolute',
     top: 0,
     right: 0,
@@ -89,11 +89,11 @@ const Home = (props: HomeProps) => {
   const classes = useStyles()
 
   return (
-    <MainContainer>
-      <Container maxWidth='lg'>
+    <MainContainer disableGutters>
+      <Container maxWidth='lg' disableGutters>
         <Header />
         <TitleBox>
-          <Typography variant='h2' className={classes.title}>
+          <Typography variant='h1' className={classes.title}>
             Join the chessy world of NFT!
           </Typography>
           <Typography variant='h4' className={classes.subtitle}>
@@ -102,13 +102,14 @@ const Home = (props: HomeProps) => {
           <Button variant='contained'>Select wallet</Button>
         </TitleBox>
 
-        <Alfil className={classes.Alfil} />
-        <Caballo className={classes.Caballo} />
+        <Bishop className={classes.Bishop} />
+        <Horse className={classes.Horse} />
         <img src={Cloud} className={classes.Cloud} />
         <Heart1 className={classes.Heart1} />
         <Heart2 className={classes.Heart2} />
         <Peon className={classes.Peon} />
-        <Qeen className={classes.Qeen} />
+        <Queen className={classes.Queen} />
+        <Timer />
       </Container>
     </MainContainer>
   );

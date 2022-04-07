@@ -21,12 +21,7 @@ import { WalletDialogProvider } from '@solana/wallet-adapter-material-ui';
 import { ThemeProvider, createTheme } from '@material-ui/core';
 
 import './global.css'
-
-const theme = createTheme({
-  palette: {
-    type: 'light',
-  },
-});
+import { theme } from './theme';
 
 const getCandyMachineId = (): anchor.web3.PublicKey | undefined => {
   try {
@@ -36,6 +31,7 @@ const getCandyMachineId = (): anchor.web3.PublicKey | undefined => {
 
     return candyMachineId;
   } catch (e) {
+    // eslint-disable-next-line no-console
     console.log('Failed to construct CandyMachineId', e);
     return undefined;
   }
