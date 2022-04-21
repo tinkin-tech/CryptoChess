@@ -5,9 +5,16 @@ import {
   Tab,
   Tabs,
   Theme,
-  Typography,
+  Typography
 } from '@material-ui/core';
 import React from 'react';
+import Stack from '@mui/material/Stack';
+import { ReactComponent as King } from '../assets/king.svg'
+import { ReactComponent as Queen } from '../assets/queen.svg'
+import { ReactComponent as Knight } from '../assets/knight.svg'
+import { ReactComponent as Castle } from '../assets/castle.svg'
+import { ReactComponent as Bishop } from '../assets/bishop.svg'
+import { ReactComponent as Pawn } from '../assets/pawn.svg'
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -61,6 +68,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     boxShadow: 'none',
     elevation: 0,
   },
+  king: {
+    padding: '5px',
+  }
 
 }));
 
@@ -97,24 +107,55 @@ const RarityComponent = () => {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        Item One
+        <div>
+          <Stack direction="row" spacing={10}>
+            <King className={classes.king}/>
+            <span>Item One</span>
+          </Stack>
+        </div>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        <div>
+          <Stack direction="row" spacing={10}>
+          <Queen/>
+            <span>Item Two</span>
+          </Stack>
+        </div>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        <div>
+          <Stack direction="row" spacing={10}>
+          <Knight/>
+            <span>Item Three</span>
+          </Stack>
+        </div>
       </TabPanel>
       <TabPanel value={value} index={3}>
-        Item Four
+        <div>
+          <Stack direction="row" spacing={10}>
+          <Castle/>
+            <span>Item Four</span>
+          </Stack>
+        </div>
       </TabPanel>
       <TabPanel value={value} index={4}>
-        Item Five
+        <div>
+          <Stack direction="row" spacing={10}>
+          <Bishop/>
+            <span>Item Five</span>
+          </Stack>
+        </div>
       </TabPanel>
       <TabPanel value={value} index={5}>
-        Item Six
+        <div>
+          <Stack direction="row" spacing={10}>
+          <Pawn/>
+            <span>Item Six</span>
+          </Stack>
+        </div>
       </TabPanel>
     </div>
+
   );
 };
 
