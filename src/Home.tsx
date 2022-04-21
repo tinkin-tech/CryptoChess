@@ -13,15 +13,15 @@ import {
 } from './candy-machine';
 import { GatewayProvider } from '@civic/solana-gateway-react';
 
-import { Container } from '@material-ui/core';
+import { Container, Grid, Typography } from '@material-ui/core';
 
 import { AlertState } from './utils';
 
 import { Header } from './Header';
 import { MintButton } from './MintButton';
 import AlertComponent from './Components/AlertComponent';
-
 import styled from 'styled-components';
+import RarityComponent from './Components/RarityComponent';
 
 const ConnectButton = styled(WalletDialogButton)`
   width: 100%;
@@ -84,7 +84,7 @@ const Home = (props: HomeProps) => {
         const cndy = await getCandyMachineState(
           anchorWallet,
           props.candyMachineId,
-          props.connection,
+          props.connection
         );
         setCandyMachine(cndy);
       } catch (e) {
@@ -109,7 +109,7 @@ const Home = (props: HomeProps) => {
             mintTxId,
             props.txTimeout,
             props.connection,
-            true,
+            true
           );
         }
 
@@ -166,53 +166,76 @@ const Home = (props: HomeProps) => {
   ]);
 
   return (
-    <Container style={{ backgroundColor: '#fff' }}>
-      <h1>Join the chessy world of NFT!</h1>
-      <h6>333 algorithmically generated, unique and cute chess pieces</h6>
-      <Container maxWidth="xs" style={{ position: 'relative' }}>
-        {!wallet.connected ? (
-          <ConnectButton>Connect Wallet</ConnectButton>
-        ) : (
-          <>
-            <Header candyMachine={candyMachine} />
-            <MintContainer>
-              {candyMachine?.state.isActive &&
-              candyMachine?.state.gatekeeper &&
-              wallet.publicKey &&
-              wallet.signTransaction ? (
-                <GatewayProvider
-                  wallet={{
-                    publicKey:
-                      wallet.publicKey || new PublicKey(CANDY_MACHINE_PROGRAM),
-                    //@ts-ignore
-                    signTransaction: wallet.signTransaction,
-                  }}
-                  gatekeeperNetwork={
-                    candyMachine?.state?.gatekeeper?.gatekeeperNetwork
-                  }
-                  clusterUrl={rpcUrl}
-                  options={{ autoShowModal: false }}
-                >
-                  <MintButton
-                    candyMachine={candyMachine}
-                    isMinting={isUserMinting}
-                    onMint={onMint}
-                  />
-                </GatewayProvider>
-              ) : (
-                <MintButton
-                  candyMachine={candyMachine}
-                  isMinting={isUserMinting}
-                  onMint={onMint}
-                />
-              )}
-            </MintContainer>
-          </>
-        )}
-      </Container>
-
-      <AlertComponent alertState={alertState} setAlertState={setAlertState} />
-    </Container>
+    <Grid container direction='column' spacing={1}>
+      <Grid item xs={12}>
+        <Container style={{ backgroundColor: '#fff' }}>
+          <h1>Join the chessy world of NFT!</h1>
+          <h6>333 algorithmically generated, unique and cute chess pieces</h6>
+          <Container maxWidth='xs' style={{ position: 'relative' }}>
+            {!wallet.connected ? (
+              <ConnectButton>Connect Wallet</ConnectButton>
+            ) : (
+              <>
+                <Header candyMachine={candyMachine} />
+                <MintContainer>
+                  {candyMachine?.state.isActive &&
+                  candyMachine?.state.gatekeeper &&
+                  wallet.publicKey &&
+                  wallet.signTransaction ? (
+                    <GatewayProvider
+                      wallet={{
+                        publicKey:
+                          wallet.publicKey ||
+                          new PublicKey(CANDY_MACHINE_PROGRAM),
+                        //@ts-ignore
+                        signTransaction: wallet.signTransaction,
+                      }}
+                      gatekeeperNetwork={
+                        candyMachine?.state?.gatekeeper?.gatekeeperNetwork
+                      }
+                      clusterUrl={rpcUrl}
+                      options={{ autoShowModal: false }}
+                    >
+                      <MintButton
+                        candyMachine={candyMachine}
+                        isMinting={isUserMinting}
+                        onMint={onMint}
+                      />
+                    </GatewayProvider>
+                  ) : (
+                    <MintButton
+                      candyMachine={candyMachine}
+                      isMinting={isUserMinting}
+                      onMint={onMint}
+                    />
+                  )}
+                </MintContainer>
+              </>
+            )}
+          </Container>
+        </Container>
+      </Grid>
+      <Grid item xs={12}>
+        <AlertComponent alertState={alertState} setAlertState={setAlertState} />
+      </Grid>
+      <Grid
+        item
+        sm
+        container
+        xs={12}
+        justifyContent='center'
+        alignItems='center'
+        direction='column'
+        spacing={2}
+      >
+        <Grid item>
+          <Typography variant='h4'>Rarity</Typography>
+        </Grid>
+        <Grid item>
+          <RarityComponent />
+        </Grid>
+      </Grid>
+    </Grid>
   );
 };
 
