@@ -8,7 +8,7 @@ import {
   Typography
 } from '@material-ui/core';
 import React from 'react';
-import Stack from '@mui/material/Stack';
+import { Stack } from '@mui/material';
 import { ReactComponent as King } from '../assets/king.svg'
 import { ReactComponent as Queen } from '../assets/queen.svg'
 import { ReactComponent as Knight } from '../assets/knight.svg'
@@ -47,22 +47,22 @@ const useStyles = makeStyles((theme: Theme) => ({
     // backgroundColor: theme.palette.background.paper,
   },
   tabs: {
-      backgroundColor: '#FFFFFF',
-      "& .MuiTabs-indicator": {
-        backgroundColor: "#2B434F",
-      },
-      "& .MuiTab-textColorInherit":{
-        color: '#C3CAD7',
-        // opacity: '0.35'
-      },
-      "& .MuiTab-root":{
-        textTransform: 'none'
-      },
-      "& .Mui-selected":{
-        color: '#2B434F',
-        fontWeight: 'bold',
-        opacity: '1'
-      }
+    backgroundColor: '#FFFFFF',
+    "& .MuiTabs-indicator": {
+      backgroundColor: "#2B434F",
+    },
+    "& .MuiTab-textColorInherit": {
+      color: '#C3CAD7',
+      // opacity: '0.35'
+    },
+    "& .MuiTab-root": {
+      textTransform: 'none'
+    },
+    "& .Mui-selected": {
+      color: '#2B434F',
+      fontWeight: 'bold',
+      opacity: '1'
+    }
   },
   appbar: {
     boxShadow: 'none',
@@ -109,7 +109,7 @@ const RarityComponent = () => {
       <TabPanel value={value} index={0}>
         <div>
           <Stack direction="row" spacing={10}>
-            <King className={classes.king}/>
+            <King className={classes.king} />
             <span>Item One</span>
           </Stack>
         </div>
@@ -117,7 +117,7 @@ const RarityComponent = () => {
       <TabPanel value={value} index={1}>
         <div>
           <Stack direction="row" spacing={10}>
-          <Queen/>
+            <Queen />
             <span>Item Two</span>
           </Stack>
         </div>
@@ -125,7 +125,7 @@ const RarityComponent = () => {
       <TabPanel value={value} index={2}>
         <div>
           <Stack direction="row" spacing={10}>
-          <Knight/>
+            <Knight />
             <span>Item Three</span>
           </Stack>
         </div>
@@ -133,7 +133,7 @@ const RarityComponent = () => {
       <TabPanel value={value} index={3}>
         <div>
           <Stack direction="row" spacing={10}>
-          <Castle/>
+            <Castle />
             <span>Item Four</span>
           </Stack>
         </div>
@@ -141,7 +141,7 @@ const RarityComponent = () => {
       <TabPanel value={value} index={4}>
         <div>
           <Stack direction="row" spacing={10}>
-          <Bishop/>
+            <Bishop />
             <span>Item Five</span>
           </Stack>
         </div>
@@ -149,7 +149,7 @@ const RarityComponent = () => {
       <TabPanel value={value} index={5}>
         <div>
           <Stack direction="row" spacing={10}>
-          <Pawn/>
+            <Pawn />
             <span>Item Six</span>
           </Stack>
         </div>
