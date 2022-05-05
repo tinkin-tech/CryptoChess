@@ -1,19 +1,28 @@
-import * as anchor from '@project-serum/anchor'
-import { Box, Button, Container, makeStyles, styled, Theme, Typography, Grid } from '@material-ui/core'
+import * as anchor from '@project-serum/anchor';
+import {
+  Box,
+  Button,
+  Container,
+  makeStyles,
+  styled,
+  Theme,
+  Typography,
+  Grid,
+} from '@material-ui/core';
 
-
-import { Header } from './Header'
-import Timer from './Components/Timer'
+import { Header } from './Header';
+import Timer from './Components/Timer';
 import RarityComponent from './Components/RarityComponent';
-import Wallet from './Wallet'
+import Wallet from './Wallet';
 
-import ChessBg from './assets/chessbg.svg'
-import { ReactComponent as Bishop } from './assets/alfil.svg'
-import { ReactComponent as Horse } from './assets/caballo.svg'
-import { ReactComponent as Heart } from './assets/heart1.svg'
-import { ReactComponent as Peon } from './assets/peon.svg'
-import { ReactComponent as Queen } from './assets/queen1.svg'
-
+import ChessBg from './assets/chessbg.svg';
+import { ReactComponent as Bishop } from './assets/alfil.svg';
+import { ReactComponent as Horse } from './assets/caballo.svg';
+import { ReactComponent as Heart } from './assets/heart1.svg';
+import { ReactComponent as Peon } from './assets/peon.svg';
+import { ReactComponent as Queen } from './assets/queen1.svg';
+import AboutUs from './Components/AboutUs';
+import Footer from './Components/Footer';
 
 const MainContainer = styled(Container)(() => ({
   backgroundImage: `url(${ChessBg})`,
@@ -24,7 +33,7 @@ const MainContainer = styled(Container)(() => ({
 
 const TitleBox = styled(Box)(() => ({
   maxWidth: '50%',
-}))
+}));
 
 const useStyles = makeStyles((theme: Theme) => ({
   title: {
@@ -62,7 +71,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     top: 0,
     right: 0,
   },
-}))
+}));
 
 export interface HomeProps {
   candyMachineId?: anchor.web3.PublicKey;
@@ -73,7 +82,7 @@ export interface HomeProps {
 }
 
 const Home = (props: HomeProps) => {
-  const classes = useStyles()
+  const classes = useStyles();
 
   return (
     <>
@@ -88,7 +97,13 @@ const Home = (props: HomeProps) => {
             <Typography variant='h4' className={classes.subtitle}>
               333 algorithmically generated, unique and cute chess pieces
             </Typography>
-            <Wallet candyMachineId={props.candyMachineId} connection={props.connection} startDate={props.startDate} txTimeout={props.txTimeout} rpcHost={props.rpcHost} />
+            <Wallet
+              candyMachineId={props.candyMachineId}
+              connection={props.connection}
+              startDate={props.startDate}
+              txTimeout={props.txTimeout}
+              rpcHost={props.rpcHost}
+            />
           </TitleBox>
 
           <Bishop className={classes.Bishop} />
@@ -97,8 +112,13 @@ const Home = (props: HomeProps) => {
           <Peon className={classes.Peon} />
           <Queen className={classes.Queen} />
 
-          <Timer candyMachineId={props.candyMachineId} connection={props.connection} startDate={props.startDate} txTimeout={props.txTimeout} rpcHost={props.rpcHost} />
-
+          <Timer
+            candyMachineId={props.candyMachineId}
+            connection={props.connection}
+            startDate={props.startDate}
+            txTimeout={props.txTimeout}
+            rpcHost={props.rpcHost}
+          />
         </Container>
       </MainContainer>
 
@@ -120,7 +140,17 @@ const Home = (props: HomeProps) => {
             <RarityComponent />
           </Grid>
         </Grid>
+        <Grid
+          item
+          sm
+          justifyContent='center'
+          alignItems='center'
+          direction='column'
+        >
+          <AboutUs />
+        </Grid>
       </Grid>
+      <Footer />
     </>
   );
 };
