@@ -1,8 +1,8 @@
 import * as anchor from '@project-serum/anchor'
-import { Box, Button, Container, makeStyles, styled, Theme, Typography, Container, Grid, Typography } from '@material-ui/core'
+import { Box, Button, Container, makeStyles, styled, Theme, Typography, Grid } from '@material-ui/core'
 
 
-import { Header, Header } from './Header'
+import { Header } from './Header'
 import Timer from './Components/Timer'
 
 import ChessBg from './assets/chessbg.svg'
@@ -12,10 +12,8 @@ import { ReactComponent as Heart } from './assets/heart1.svg'
 import { ReactComponent as Peon } from './assets/peon.svg'
 import { ReactComponent as Queen } from './assets/queen.svg'
 
-
 import { MintButton } from './MintButton';
 import AlertComponent from './Components/AlertComponent';
-import styled from 'styled-components';
 import RarityComponent from './Components/RarityComponent';
 
 const MainContainer = styled(Container)(() => ({
