@@ -88,7 +88,6 @@ const Home = (props: HomeProps) => {
             <Typography variant='h4' className={classes.subtitle}>
               333 algorithmically generated, unique and cute chess pieces
             </Typography>
-            <Button variant='contained'>Select wallet</Button>
             <Wallet candyMachineId={props.candyMachineId} connection={props.connection} startDate={props.startDate} txTimeout={props.txTimeout} rpcHost={props.rpcHost} />
           </TitleBox>
 
@@ -98,7 +97,7 @@ const Home = (props: HomeProps) => {
           <Peon className={classes.Peon} />
           <Queen className={classes.Queen} />
 
-          <Timer />
+          <Timer candyMachineId={props.candyMachineId} connection={props.connection} startDate={props.startDate} txTimeout={props.txTimeout} rpcHost={props.rpcHost} />
 
         </Container>
       </MainContainer>
