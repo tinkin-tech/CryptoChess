@@ -5,16 +5,18 @@ import {
   Tab,
   Tabs,
   Theme,
-  Typography
+  Typography,
+  Divider,
 } from '@material-ui/core';
 import React from 'react';
 import { Stack } from '@mui/material';
-import { ReactComponent as King } from '../assets/king.svg'
-import { ReactComponent as Queen } from '../assets/queen.svg'
-import { ReactComponent as Knight } from '../assets/knight.svg'
-import { ReactComponent as Castle } from '../assets/castle.svg'
-import { ReactComponent as Bishop } from '../assets/bishop.svg'
-import { ReactComponent as Pawn } from '../assets/pawn.svg'
+import { ReactComponent as King } from '../assets/king.svg';
+import { ReactComponent as Queen } from '../assets/queen.svg';
+import { ReactComponent as Knight } from '../assets/knight.svg';
+import { ReactComponent as Castle } from '../assets/castle.svg';
+import { ReactComponent as Bishop } from '../assets/bishop.svg';
+import { ReactComponent as Pawn } from '../assets/pawn.svg';
+import Tablero from '../assets/tablero.svg';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -44,34 +46,57 @@ function TabPanel(props: TabPanelProps) {
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     flexGrow: 1,
+    backgroundImage: `url(${Tablero})`,
     // backgroundColor: theme.palette.background.paper,
   },
   tabs: {
     backgroundColor: '#FFFFFF',
-    "& .MuiTabs-indicator": {
-      backgroundColor: "#2B434F",
+    '& .MuiTabs-indicator': {
+      backgroundColor: '#2B434F',
     },
-    "& .MuiTab-textColorInherit": {
+    '& .MuiTab-textColorInherit': {
       color: '#C3CAD7',
       // opacity: '0.35'
     },
-    "& .MuiTab-root": {
-      textTransform: 'none'
+    '& .MuiTab-root': {
+      textTransform: 'none',
     },
-    "& .Mui-selected": {
+    '& .Mui-selected': {
       color: '#2B434F',
       fontWeight: 'bold',
-      opacity: '1'
-    }
+      opacity: '1',
+    },
   },
   appbar: {
     boxShadow: 'none',
     elevation: 0,
   },
-  king: {
-    padding: '5px',
-  }
-
+  imagepiece: {
+    marginTop: 135,
+  },
+  spantop: {
+    color: '#505763',
+    fontFamily: 'VT323',
+    fontStyle: 'normal',
+    fontSize: 30,
+    fontWeight: 400,
+  },
+  spanbotton: {
+    color: '#2B434F',
+    fontFamily: 'VT323',
+    fontStyle: 'normal',
+    fontSize: 20,
+    fontWeight: 400,
+    textAlign: 'center',
+  },
+  divinfo: {
+    marginTop: 80,
+  },
+  hr: {
+    color: '#505763',
+    border: '1px dashed #505763',
+    flexDirection: 'column',
+  },
 }));
 
 const RarityComponent = () => {
@@ -107,55 +132,65 @@ const RarityComponent = () => {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <div>
-          <Stack direction="row" spacing={10}>
-            <King className={classes.king} />
-            <span>Item One</span>
+        <Stack direction='row' spacing={10}>
+          <King className={classes.imagepiece} />
+          <Stack spacing={2}>
+            <div>
+              <Stack direction='row' spacing={2} marginTop={15}>
+                <span className={classes.spantop}>Total pieces</span>
+                <span className={classes.spantop}>.............</span>
+                <span className={classes.spantop}>333</span>
+              </Stack>
+              <Stack direction='row' spacing={2}>
+                <span className={classes.spantop}>Rarity</span>
+                <hr className={classes.hr} />
+                <span className={classes.spantop}>5%</span>
+              </Stack>
+            </div>
+            <div>
+              <Stack marginTop={15}>
+                <span className={classes.spanbotton}>Background: </span>
+                <span className={classes.spanbotton}>55 rarity</span>
+                <span className={classes.spanbotton}>Eyes</span>
+                <span className={classes.spanbotton}>55 variations</span>
+                <span className={classes.spanbotton}>Accessories</span>
+                <span className={classes.spanbotton}>55 variations</span>
+              </Stack>
+            </div>
           </Stack>
-        </div>
+        </Stack>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <div>
-          <Stack direction="row" spacing={10}>
-            <Queen />
-            <span>Item Two</span>
-          </Stack>
-        </div>
+        <Stack direction='row' spacing={10}>
+          <Queen className={classes.imagepiece} />
+          <span>Item Two</span>
+        </Stack>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <div>
-          <Stack direction="row" spacing={10}>
-            <Knight />
-            <span>Item Three</span>
-          </Stack>
-        </div>
+        <Stack direction='row' spacing={10}>
+          <Knight className={classes.imagepiece} />
+          <span>Item Three</span>
+        </Stack>
       </TabPanel>
       <TabPanel value={value} index={3}>
-        <div>
-          <Stack direction="row" spacing={10}>
-            <Castle />
-            <span>Item Four</span>
-          </Stack>
-        </div>
+        <Stack direction='row' spacing={10}>
+          <Castle className={classes.imagepiece} />
+          <span>Item Four</span>
+        </Stack>
       </TabPanel>
       <TabPanel value={value} index={4}>
-        <div>
-          <Stack direction="row" spacing={10}>
-            <Bishop />
-            <span>Item Five</span>
-          </Stack>
-        </div>
+        <Stack direction='row' spacing={10}>
+          <Bishop className={classes.imagepiece} />
+          <span>Item Five</span>
+        </Stack>
       </TabPanel>
       <TabPanel value={value} index={5}>
-        <div>
-          <Stack direction="row" spacing={10}>
-            <Pawn />
-            <span>Item Six</span>
-          </Stack>
-        </div>
+        <Stack direction='row' spacing={10}>
+          <Pawn className={classes.imagepiece} />
+          <span>Item Six</span>
+        </Stack>
       </TabPanel>
     </div>
-
   );
 };
 
