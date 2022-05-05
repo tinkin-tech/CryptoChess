@@ -4,12 +4,10 @@ import { Box, Button, Container, makeStyles, styled, Theme, Typography } from '@
 import { Header } from './Header'
 
 import ChessBg from './assets/chessbg.svg'
-import Cloud from './assets/cloud.png'
 
 import { ReactComponent as Bishop } from './assets/alfil.svg'
 import { ReactComponent as Horse } from './assets/caballo.svg'
-import { ReactComponent as Heart1 } from './assets/heart1.svg'
-import { ReactComponent as Heart2 } from './assets/heart2.svg'
+import { ReactComponent as Heart } from './assets/heart1.svg'
 import { ReactComponent as Peon } from './assets/peon.svg'
 import { ReactComponent as Queen } from './assets/queen.svg'
 import Timer from './Components/Timer'
@@ -26,10 +24,6 @@ const TitleBox = styled(Box)(() => ({
 }))
 
 const useStyles = makeStyles((theme: Theme) => ({
-  second: {
-    display: 'flex',
-    flexDirection: 'row',
-  },
   title: {
     color: '#2B434F',
     fontWeight: 800,
@@ -50,20 +44,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     top: 300,
     right: 420,
   },
-  Cloud: {
+  Heart: {
     position: 'absolute',
-    top: 620,
-    right: 750,
-  },
-  Heart1: {
-    position: 'absolute',
-    top: 100,
-    right: 470,
-  },
-  Heart2: {
-    position: 'absolute',
-    top: 800,
-    right: 80,
+    top: 750,
+    right: 550,
   },
   Peon: {
     position: 'absolute',
@@ -92,6 +76,7 @@ const Home = (props: HomeProps) => {
     <MainContainer disableGutters>
       <Container maxWidth='lg' disableGutters>
         <Header />
+
         <TitleBox>
           <Typography variant='h1' className={classes.title}>
             Join the chessy world of NFT!
@@ -104,12 +89,12 @@ const Home = (props: HomeProps) => {
 
         <Bishop className={classes.Bishop} />
         <Horse className={classes.Horse} />
-        <img src={Cloud} className={classes.Cloud} />
-        <Heart1 className={classes.Heart1} />
-        <Heart2 className={classes.Heart2} />
+        <Heart className={classes.Heart} />
         <Peon className={classes.Peon} />
         <Queen className={classes.Queen} />
+
         <Timer />
+
       </Container>
     </MainContainer>
   );
