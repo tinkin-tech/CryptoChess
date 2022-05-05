@@ -4,6 +4,8 @@ import { Box, Button, Container, makeStyles, styled, Theme, Typography, Grid } f
 
 import { Header } from './Header'
 import Timer from './Components/Timer'
+import RarityComponent from './Components/RarityComponent';
+import Wallet from './Wallet'
 
 import ChessBg from './assets/chessbg.svg'
 import { ReactComponent as Bishop } from './assets/alfil.svg'
@@ -12,7 +14,6 @@ import { ReactComponent as Heart } from './assets/heart1.svg'
 import { ReactComponent as Peon } from './assets/peon.svg'
 import { ReactComponent as Queen } from './assets/queen1.svg'
 
-import RarityComponent from './Components/RarityComponent';
 
 const MainContainer = styled(Container)(() => ({
   backgroundImage: `url(${ChessBg})`,
@@ -88,6 +89,7 @@ const Home = (props: HomeProps) => {
               333 algorithmically generated, unique and cute chess pieces
             </Typography>
             <Button variant='contained'>Select wallet</Button>
+            <Wallet candyMachineId={props.candyMachineId} connection={props.connection} startDate={props.startDate} txTimeout={props.txTimeout} rpcHost={props.rpcHost} />
           </TitleBox>
 
           <Bishop className={classes.Bishop} />
