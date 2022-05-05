@@ -46,17 +46,16 @@ function TabPanel(props: TabPanelProps) {
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     flexGrow: 1,
-    backgroundImage: `url(${Tablero})`,
-    // backgroundColor: theme.palette.background.paper,
+    width: '100%',
   },
   tabs: {
+    margin: '0 auto',
     backgroundColor: '#FFFFFF',
     '& .MuiTabs-indicator': {
       backgroundColor: '#2B434F',
     },
     '& .MuiTab-textColorInherit': {
       color: '#C3CAD7',
-      // opacity: '0.35'
     },
     '& .MuiTab-root': {
       textTransform: 'none',
@@ -97,13 +96,17 @@ const useStyles = makeStyles((theme: Theme) => ({
     border: '1px dashed #505763',
     flexDirection: 'column',
   },
+  tab: {
+    fontSize: '25px',
+    lineHeight: '32px',
+    width: '213px',
+  },
 }));
 
 const RarityComponent = () => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
   const handleChange = (event: React.ChangeEvent<any>, newValue: number) => {
-    // console.log({ newValue });
     setValue(newValue);
   };
 
@@ -123,16 +126,16 @@ const RarityComponent = () => {
           aria-label='simple tabs example'
           className={classes.tabs}
         >
-          <Tab label='King' {...a11yProps(0)} />
-          <Tab label='Queen' {...a11yProps(1)} />
-          <Tab label='Knight' {...a11yProps(2)} />
-          <Tab label='Castle' {...a11yProps(3)} />
-          <Tab label='Bishop' {...a11yProps(4)} />
-          <Tab label='Pawn' {...a11yProps(5)} />
+          <Tab className={classes.tab} label='King' {...a11yProps(0)} />
+          <Tab className={classes.tab} label='Queen' {...a11yProps(1)} />
+          <Tab className={classes.tab} label='Knight' {...a11yProps(2)} />
+          <Tab className={classes.tab} label='Castle' {...a11yProps(3)} />
+          <Tab className={classes.tab} label='Bishop' {...a11yProps(4)} />
+          <Tab className={classes.tab} label='Pawn' {...a11yProps(5)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <Stack direction='row' spacing={10}>
+        <Stack direction='row' justifyContent='space-around'>
           <King className={classes.imagepiece} />
           <Stack spacing={2}>
             <div>

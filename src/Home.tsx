@@ -16,6 +16,7 @@ import RarityComponent from './Components/RarityComponent';
 import Wallet from './Wallet';
 
 import ChessBg from './assets/chessbg.svg';
+import RarityBGBg from './assets/background_rarity.png';
 import { ReactComponent as Bishop } from './assets/alfil.svg';
 import { ReactComponent as Horse } from './assets/caballo.svg';
 import { ReactComponent as Heart } from './assets/heart1.svg';
@@ -28,6 +29,12 @@ const MainContainer = styled(Container)(() => ({
   backgroundImage: `url(${ChessBg})`,
   minWidth: '100%',
   minHeight: 1080,
+  margin: 0,
+}));
+
+const RarityContainer = styled(Container)(() => ({
+  backgroundImage: `linear-gradient(rgba(255,255,255,1), rgba(255,255,255,0)), url(${RarityBGBg})`,
+  minWidth: '100%',
   margin: 0,
 }));
 
@@ -133,11 +140,30 @@ const Home = (props: HomeProps) => {
           direction='column'
           spacing={2}
         >
-          <Grid item>
-            <Typography variant='h4'>Rarity</Typography>
+          <Grid
+            item
+            direction='row'
+            style={{
+              width: '100%',
+            }}
+          >
+            <Typography
+              variant='h4'
+              style={{
+                fontSize: '100px',
+                color: '#A4ACBA',
+                justifySelf: 'flex-start',
+                width: '100%',
+                paddingLeft: '80px',
+              }}
+            >
+              Rarity
+            </Typography>
           </Grid>
-          <Grid item>
-            <RarityComponent />
+          <Grid item style={{ width: '100%' }}>
+            <RarityContainer>
+              <RarityComponent />
+            </RarityContainer>
           </Grid>
         </Grid>
         <Grid
