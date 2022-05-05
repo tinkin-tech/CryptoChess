@@ -1,6 +1,8 @@
+import * as anchor from '@project-serum/anchor'
 import React, { useState } from 'react'
 import { Button, Container, makeStyles, Typography } from '@material-ui/core';
 import { ReactComponent as Heart } from '../assets/heart2.svg'
+import Wallet from '../Wallet';
 
 const useStyles = makeStyles(() => ({
   main: {
@@ -15,15 +17,20 @@ const useStyles = makeStyles(() => ({
     gap: 32,
     marginTop: 400,
   },
-  button: {
-    backgroundColor: '#D2F0FF',
-  },
   heart: {
     marginTop: -100,
   },
 }))
 
-const Timer = () => {
+export interface IProps {
+  candyMachineId?: anchor.web3.PublicKey;
+  connection: anchor.web3.Connection;
+  startDate: number;
+  txTimeout: number;
+  rpcHost: string;
+}
+
+const Timer = (props: IProps) => {
   const classes = useStyles()
 
   const [days, setDays] = useState(0)
@@ -39,7 +46,7 @@ const Timer = () => {
         <Typography variant='h3'>
           {`${days}d : ${hours}h : ${minutes}m : ${seconds}s`}
         </Typography>
-        <Button variant='contained' className={classes.button}>Mint now</Button>
+        <Wallet mint candyMachineId={props.candyMachineId} connection={props.connection} startDate={props.startDate} txTimeout={props.txTimeout} rpcHost={props.rpcHost} />
       </Container>
       <Heart className={classes.heart} />
     </>

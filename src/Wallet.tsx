@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState, useCallback } from 'react';
 import * as anchor from '@project-serum/anchor';
 
 import styled from 'styled-components';
-import { Container, Snackbar } from '@material-ui/core';
+import { Container, makeStyles, Snackbar } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import Alert from '@material-ui/lab/Alert';
 import { PublicKey } from '@solana/web3.js';
@@ -20,15 +20,21 @@ import { MintButton } from './MintButton';
 import { GatewayProvider } from '@civic/solana-gateway-react';
 
 const ConnectButton = styled(WalletDialogButton)`
-  width: 100%;
-  height: 60px;
-  margin-top: 10px;
-  margin-bottom: 5px;
-  background: linear-gradient(180deg, #604ae5 0%, #813eee 100%);
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
+  height: 48px;
+  color: black;
+  font-size: 18px;
+  border: 2px solid black;
+  border-radius: 10px;
 `;
+
+const useStyles = makeStyles(() => ({
+  mint: {
+    backgroundColor: '#A9DEF9',
+  },
+  default: {
+    backgroundColor: '#F694C1',
+  },
+}))
 
 const MintContainer = styled.div``; // add your owns styles here
 
@@ -38,9 +44,12 @@ export interface WalletProps {
   startDate: number;
   txTimeout: number;
   rpcHost: string;
+  mint?: boolean;
 }
 
 const Wallet = (props: WalletProps) => {
+  const classes = useStyles()
+
   const [isUserMinting, setIsUserMinting] = useState(false);
   const [candyMachine, setCandyMachine] = useState<CandyMachineAccount>();
   const [alertState, setAlertState] = useState<AlertState>({
@@ -161,52 +170,47 @@ const Wallet = (props: WalletProps) => {
   ]);
 
   return (
-    <Container style={{ marginTop: 100 }}>
-      <Container maxWidth="xs" style={{ position: 'relative' }}>
-        <Paper
-          style={{ padding: 24, backgroundColor: '#151A1F', borderRadius: 6 }}
-        >
-          {!wallet.connected ? (
-            <ConnectButton>Connect Wallet</ConnectButton>
-          ) : (
-            <>
-              <MintContainer>
-                {candyMachine?.state.isActive &&
-                candyMachine?.state.gatekeeper &&
-                wallet.publicKey &&
-                wallet.signTransaction ? (
-                  <GatewayProvider
-                    wallet={{
-                      publicKey:
-                        wallet.publicKey ||
-                        new PublicKey(CANDY_MACHINE_PROGRAM),
-                      //@ts-ignore
-                      signTransaction: wallet.signTransaction,
-                    }}
-                    gatekeeperNetwork={
-                      candyMachine?.state?.gatekeeper?.gatekeeperNetwork
-                    }
-                    clusterUrl={rpcUrl}
-                    options={{ autoShowModal: false }}
-                  >
-                    <MintButton
-                      candyMachine={candyMachine}
-                      isMinting={isUserMinting}
-                      onMint={onMint}
-                    />
-                  </GatewayProvider>
-                ) : (
-                  <MintButton
-                    candyMachine={candyMachine}
-                    isMinting={isUserMinting}
-                    onMint={onMint}
-                  />
-                )}
-              </MintContainer>
-            </>
-          )}
-        </Paper>
-      </Container>
+    <>
+      {!wallet.connected ? (
+        <ConnectButton className={props.mint ? classes.mint : classes.default}>Select wallet</ConnectButton>
+      ) : (
+        <>
+          <MintContainer>
+            {candyMachine?.state.isActive &&
+              candyMachine?.state.gatekeeper &&
+              wallet.publicKey &&
+              wallet.signTransaction ? (
+              <GatewayProvider
+                wallet={{
+                  publicKey:
+                    wallet.publicKey ||
+                    new PublicKey(CANDY_MACHINE_PROGRAM),
+                  //@ts-ignore
+                  signTransaction: wallet.signTransaction,
+                }}
+                gatekeeperNetwork={
+                  candyMachine?.state?.gatekeeper?.gatekeeperNetwork
+                }
+                clusterUrl={rpcUrl}
+                options={{ autoShowModal: false }}
+              >
+                <MintButton
+                  candyMachine={candyMachine}
+                  isMinting={isUserMinting}
+                  onMint={onMint}
+                />
+              </GatewayProvider>
+            ) : (
+              <MintButton
+                candyMachine={candyMachine}
+                isMinting={isUserMinting}
+                onMint={onMint}
+              />
+            )}
+          </MintContainer>
+        </>
+      )
+      }
 
       <Snackbar
         open={alertState.open}
@@ -220,7 +224,7 @@ const Wallet = (props: WalletProps) => {
           {alertState.message}
         </Alert>
       </Snackbar>
-    </Container>
+    </>
   );
 };
 
