@@ -10,7 +10,7 @@ import { ReactComponent as Bishop } from './assets/alfil.svg'
 import { ReactComponent as Horse } from './assets/caballo.svg'
 import { ReactComponent as Heart } from './assets/heart1.svg'
 import { ReactComponent as Peon } from './assets/peon.svg'
-import { ReactComponent as Queen } from './assets/queen.svg'
+import { ReactComponent as Queen } from './assets/queen1.svg'
 
 import RarityComponent from './Components/RarityComponent';
 

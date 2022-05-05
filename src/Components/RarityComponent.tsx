@@ -8,7 +8,7 @@ import {
   Typography
 } from '@material-ui/core';
 import React from 'react';
-import Stack from '@mui/material/Stack';
+import { Stack } from '@mui/material';
 import { ReactComponent as King } from '../assets/king.svg'
 import { ReactComponent as Queen } from '../assets/queen.svg'
 import { ReactComponent as Knight } from '../assets/knight.svg'
