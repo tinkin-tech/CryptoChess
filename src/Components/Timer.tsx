@@ -46,7 +46,7 @@ const Timer = (props: IProps) => {
         <Typography variant='h3'>
           {`${days}d : ${hours}h : ${minutes}m : ${seconds}s`}
         </Typography>
-        <Wallet candyMachineId={props.candyMachineId} connection={props.connection} startDate={props.startDate} txTimeout={props.txTimeout} rpcHost={props.rpcHost} />
+        <Wallet mint candyMachineId={props.candyMachineId} connection={props.connection} startDate={props.startDate} txTimeout={props.txTimeout} rpcHost={props.rpcHost} />
       </Container>
       <Heart className={classes.heart} />
     </>

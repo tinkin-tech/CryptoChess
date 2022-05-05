@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState, useCallback } from 'react';
 import * as anchor from '@project-serum/anchor';
 
 import styled from 'styled-components';
-import { Container, Snackbar } from '@material-ui/core';
+import { Container, makeStyles, Snackbar } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import Alert from '@material-ui/lab/Alert';
 import { PublicKey } from '@solana/web3.js';
@@ -21,13 +21,20 @@ import { GatewayProvider } from '@civic/solana-gateway-react';
 
 const ConnectButton = styled(WalletDialogButton)`
   height: 48px;
-  background: #F694C1;
   color: black;
   font-size: 18px;
   border: 2px solid black;
   border-radius: 10px;
 `;
-// backgroundColor: props.color ?? '#F694C1', color: props.textColor, fontFamily: 'VT323, monospace'
+
+const useStyles = makeStyles(() => ({
+  mint: {
+    backgroundColor: '#A9DEF9',
+  },
+  default: {
+    backgroundColor: '#F694C1',
+  },
+}))
 
 const MintContainer = styled.div``; // add your owns styles here
 
@@ -37,9 +44,12 @@ export interface WalletProps {
   startDate: number;
   txTimeout: number;
   rpcHost: string;
+  mint?: boolean;
 }
 
 const Wallet = (props: WalletProps) => {
+  const classes = useStyles()
+
   const [isUserMinting, setIsUserMinting] = useState(false);
   const [candyMachine, setCandyMachine] = useState<CandyMachineAccount>();
   const [alertState, setAlertState] = useState<AlertState>({
@@ -162,7 +172,7 @@ const Wallet = (props: WalletProps) => {
   return (
     <>
       {!wallet.connected ? (
-        <ConnectButton>Select wallet</ConnectButton>
+        <ConnectButton className={props.mint ? classes.mint : classes.default}>Select wallet</ConnectButton>
       ) : (
         <>
           <MintContainer>
