@@ -16,7 +16,8 @@ import { ReactComponent as Knight } from '../assets/knight.svg';
 import { ReactComponent as Castle } from '../assets/castle.svg';
 import { ReactComponent as Bishop } from '../assets/bishop.svg';
 import { ReactComponent as Pawn } from '../assets/pawn.svg';
-import Tablero from '../assets/tablero.svg';
+import { height } from '@mui/system';
+// import Tablero from '../assets/tablero.svg';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -46,7 +47,9 @@ function TabPanel(props: TabPanelProps) {
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     flexGrow: 1,
-    backgroundImage: `url(${Tablero})`,
+    width:1440,
+    height:1009,
+    // backgroundImage: `url(${Tablero})`,
     // backgroundColor: theme.palette.background.paper,
   },
   tabs: {
