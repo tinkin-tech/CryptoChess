@@ -1,7 +1,7 @@
 import { makeStyles, Typography } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import AppBar from '@material-ui/core/AppBar';
-import Chess from '../assets/icon.png';
+import Chess from '../assets/alt-icon.png';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';

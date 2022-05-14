@@ -1,7 +1,6 @@
 import { Theme, makeStyles, Typography, Container } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
-import { padding } from '@mui/system';
-import Chess from '../assets/icon.png';
+import Chess from '../assets/alt-icon.png';
 
 const useStyles = makeStyles((theme: Theme) => ({
   nav: {
