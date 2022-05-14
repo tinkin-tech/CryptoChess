@@ -3,6 +3,7 @@ body {
   padding: 0;
   margin: 0;
   overflow-x: hidden;
+  width: '100vw';
 }
 
 * {
@@ -11,4 +12,137 @@ body {
 
 .MuiAppBar-colorPrimary {
   background-color: #ffffff !important;
+}
+
+@keyframes floater {
+  0% {
+    transform: translateY(-10%);
+    transition: step-start 0.5s;
+  }
+  50% {
+    transform: translateY(10%);
+    transition: step-start 0.5s;
+  }
+}
+
+.floating-img {
+  transform: translateY(-10%);
+  animation: floater 5s infinite;
+  transition: step-start 0.5s;
+}
+
+@keyframes floaterQueen {
+  0% {
+    transform: translateX(0%) translateY(0%);
+    transition: ease 0.5s;
+  }
+  50% {
+    transform: translateX(10%) translateY(-10%);
+    transition: ease 0.5s;
+  }
+}
+
+.floating-img-queen {
+  transform: translateX(0%) translateY(0%);
+  animation: floaterQueen 3s infinite;
+  transition: ease 0.5s;
+}
+
+@keyframes floaterKnight {
+  0% {
+    transform: translateY(-10%);
+    transition: ease 0.5s;
+  }
+  50% {
+    transform: translateY(10%);
+    transition: ease 0.5s;
+  }
+}
+
+.floating-img-knight {
+  transform: translateY(-10%);
+  animation: floaterKnight 10s infinite;
+  transition: ease 0.5s;
+}
+
+@keyframes floaterPawn {
+  0% {
+    transform: translateY(8%);
+    transition: ease 0.5s;
+  }
+  50% {
+    transform: translateY(-8%);
+    transition: ease 0.5s;
+  }
+}
+
+.floating-img-pawn {
+  transform: translateY(8%);
+  animation: floaterPawn 6s infinite;
+  transition: ease 0.5s;
+}
+
+@keyframes floaterHeart {
+  0% {
+    transform: translateX(0%) translateY(0%);
+    transition: ease 0.5s;
+  }
+  25% {
+    transform: translateX(10%) translateY(-10%);
+    transition: ease 0.5s;
+  }
+  50% {
+    transform: translateX(-10%) translateY(10%);
+    transition: ease 0.5s;
+  }
+  75% {
+    transform: translateX(-20%) translateY(70%);
+    transition: ease 0.5s;
+  }
+}
+
+@keyframes orbit2 {
+  from {
+    transform: rotate(0deg) translateX(100px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(100px) rotate(-360deg);
+  }
+}
+
+.floating-img-heart {
+  transform: rotate(45deg) translateX(150px) rotate(-45deg);
+  animation: orbit2 10s linear infinite;
+  transition: ease 0.5s;
+}
+
+@keyframes orbit {
+  from {
+    transform: rotate(0deg) translateX(50px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(50px) rotate(-360deg);
+  }
+}
+
+.floating-img-orbit {
+  transform: rotate(45deg) translateX(50px) rotate(-45deg);
+  animation: orbit 10s linear infinite;
+  transition: ease 0.5s;
+}
+
+
+@keyframes orbit3 {
+  from {
+    transform: rotate(0deg) translateX(50px) rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg) translateX(50px) rotate(360deg);
+  }
+}
+
+.floating-img-orbit-3 {
+  transform: rotate(-45deg) translateX(50px) rotate(45deg);
+  animation: orbit3 10s linear infinite;
+  transition: ease 0.5s;
 }

@@ -1,7 +1,6 @@
 import * as anchor from '@project-serum/anchor';
 import {
   Box,
-  Button,
   Container,
   makeStyles,
   styled,
@@ -10,10 +9,9 @@ import {
   Grid,
 } from '@material-ui/core';
 
-import { Header } from './Header';
+import { Header } from './Components/Header';
 import Timer from './Components/Timer';
 import RarityComponent from './Components/RarityComponent';
-import Wallet from './Wallet';
 
 import ChessBg from './assets/chessbg.svg';
 import RarityBGBg from './assets/background_rarity.png';
@@ -96,7 +94,6 @@ const Home = (props: HomeProps) => {
       <MainContainer disableGutters>
         <Container maxWidth='lg' disableGutters>
           <Header />
-
           <TitleBox>
             <Typography variant='h1' className={classes.title}>
               Join the chessy world of NFT!
@@ -104,20 +101,12 @@ const Home = (props: HomeProps) => {
             <Typography variant='h4' className={classes.subtitle}>
               333 algorithmically generated, unique and cute chess pieces
             </Typography>
-            <Wallet
-              candyMachineId={props.candyMachineId}
-              connection={props.connection}
-              startDate={props.startDate}
-              txTimeout={props.txTimeout}
-              rpcHost={props.rpcHost}
-            />
           </TitleBox>
-
-          <Bishop className={classes.Bishop} />
-          <Horse className={classes.Horse} />
-          <Heart className={classes.Heart} />
-          <Peon className={classes.Peon} />
-          <Queen className={classes.Queen} />
+          <Bishop className={`${classes.Bishop} floating-img`} />
+          <Horse className={`${classes.Horse} floating-img-knight`} />
+          <Heart className={`${classes.Heart} floating-img-heart`} />
+          <Peon className={`${classes.Peon} floating-img-pawn`} />
+          <Queen className={`${classes.Queen} floating-img-queen`} />
 
           <Timer
             candyMachineId={props.candyMachineId}
@@ -139,12 +128,14 @@ const Home = (props: HomeProps) => {
           alignItems='center'
           direction='column'
           spacing={2}
+          style={{ backgroundColor: '#FFF' }}
         >
           <Grid
             item
             direction='row'
             style={{
               width: '100%',
+              backgroundColor: '#FFF',
             }}
           >
             <Typography
@@ -155,6 +146,7 @@ const Home = (props: HomeProps) => {
                 justifySelf: 'flex-start',
                 width: '100%',
                 paddingLeft: '80px',
+                backgroundColor: '#FFF',
               }}
             >
               Rarity

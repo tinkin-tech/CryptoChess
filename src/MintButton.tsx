@@ -44,7 +44,7 @@ export const MintButton = ({
       return 'PRESALE MINT';
     }
 
-    return 'MINT';
+    return 'MINT NOW';
   };
 
   return (
@@ -68,6 +68,7 @@ export const MintButton = ({
         }
       }}
       variant="contained"
+      style={{fontSize: '20px', fontWeight: '500', fontStretch: '100%'}}
     >
       {getMintButtonContent()}
     </CTAButton>

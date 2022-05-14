@@ -36,7 +36,9 @@ const useStyles = makeStyles(() => ({
   },
 }))
 
-const MintContainer = styled.div``; // add your owns styles here
+const MintContainer = styled.div`
+  width: 20%;
+`; // add your owns styles here
 
 export interface WalletProps {
   candyMachineId?: anchor.web3.PublicKey;
