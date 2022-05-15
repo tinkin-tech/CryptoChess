@@ -573,14 +573,14 @@ const Home = (props: HomeProps) => {
     refreshCandyMachineState,
   ]);
 
-  useEffect(() => {
+/*   useEffect(() => {
     (function loop() {
       setTimeout(() => {
         refreshCandyMachineState();
         loop();
       }, 20000);
     })();
-  }, [refreshCandyMachineState]);
+  }, [refreshCandyMachineState]); */
 
   const classesTimer = useStylesTimer();
 
@@ -868,7 +868,6 @@ const Home = (props: HomeProps) => {
           <Heart className={`${classes.Heart} floating-img-heart`} />
           <Peon className={`${classes.Peon} floating-img-pawn`} />
           <Queen className={`${classes.Queen} floating-img-queen`} />
-
           <Wallet />
         </Container>
       </MainContainer>
