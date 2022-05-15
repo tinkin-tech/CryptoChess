@@ -483,7 +483,7 @@ const Home = (props: HomeProps) => {
   const MainContainer = styled(Container)(() => ({
     backgroundImage: `url(${ChessBg})`,
     minWidth: '100%',
-    minHeight: 1080,
+    minHeight: 1280,
     margin: 0,
   }));
 
@@ -539,7 +539,7 @@ const Home = (props: HomeProps) => {
   const useStylesTimer = makeStyles(() => ({
     main: {
       position: 'absolute',
-      bottom: 0,
+      bottom: -150,
       backgroundColor: '#F694C1',
       color: 'white',
       display: 'flex',
