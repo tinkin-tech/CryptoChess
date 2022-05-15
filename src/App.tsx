@@ -1,7 +1,8 @@
+import './App.css';
 import { useMemo } from 'react';
 import * as anchor from '@project-serum/anchor';
 import Home from './Home';
-
+import { DEFAULT_TIMEOUT } from './connection';
 import { clusterApiUrl } from '@solana/web3.js';
 import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
 import {
@@ -19,19 +20,17 @@ import {
 import { WalletDialogProvider } from '@solana/wallet-adapter-material-ui';
 
 import { ThemeProvider, createTheme } from '@material-ui/core';
-
-import './global.css'
+import './global.css';
 import { theme } from './theme';
 
 const getCandyMachineId = (): anchor.web3.PublicKey | undefined => {
   try {
     const candyMachineId = new anchor.web3.PublicKey(
-      process.env.REACT_APP_CANDY_MACHINE_ID!,
+      process.env.REACT_APP_CANDY_MACHINE_ID!
     );
 
     return candyMachineId;
   } catch (e) {
-    // eslint-disable-next-line no-console
     console.log('Failed to construct CandyMachineId', e);
     return undefined;
   }
@@ -41,11 +40,8 @@ const candyMachineId = getCandyMachineId();
 const network = process.env.REACT_APP_SOLANA_NETWORK as WalletAdapterNetwork;
 const rpcHost = process.env.REACT_APP_SOLANA_RPC_HOST!;
 const connection = new anchor.web3.Connection(
-  rpcHost ? rpcHost : anchor.web3.clusterApiUrl('devnet'),
+  rpcHost ? rpcHost : anchor.web3.clusterApiUrl('devnet')
 );
-
-const startDateSeed = parseInt(process.env.REACT_APP_CANDY_START_DATE!, 10);
-const txTimeoutInMilliseconds = 30000;
 
 const App = () => {
   const endpoint = useMemo(() => clusterApiUrl(network), []);
@@ -58,7 +54,7 @@ const App = () => {
       getSolletWallet({ network }),
       getSolletExtensionWallet({ network }),
     ],
-    [],
+    []
   );
 
   return (
@@ -69,9 +65,9 @@ const App = () => {
             <Home
               candyMachineId={candyMachineId}
               connection={connection}
-              startDate={startDateSeed}
-              txTimeout={txTimeoutInMilliseconds}
+              txTimeout={DEFAULT_TIMEOUT}
               rpcHost={rpcHost}
+              network={network}
             />
           </WalletDialogProvider>
         </WalletProvider>

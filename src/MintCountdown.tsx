@@ -8,25 +8,25 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'flex',
       padding: theme.spacing(0),
       '& > *': {
-        margin: theme.spacing(0.5),
-        marginRight: 0,
+        margin: theme.spacing(0.4),
         width: theme.spacing(6),
         height: theme.spacing(6),
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'row',
         alignContent: 'center',
         alignItems: 'center',
         justifyContent: 'center',
-        background: '#384457',
+        background: 'transparent',
         color: 'white',
         borderRadius: 5,
-        fontSize: 10,
+        fontSize: 48,
       },
     },
     done: {
       display: 'flex',
-      margin: theme.spacing(1),
-      marginRight: 0,
+      margin: 0,
+      marginBottom: theme.spacing(0.5),
+      height: theme.spacing(3.5),
       padding: theme.spacing(1),
       flexDirection: 'column',
       alignContent: 'center',
@@ -40,9 +40,9 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     item: {
       fontWeight: 'bold',
-      fontSize: 18,
+      fontSize: 48,
     },
-  }),
+  })
 );
 
 interface MintCountdownProps {
@@ -86,7 +86,10 @@ export const MintCountdown: React.FC<MintCountdownProps> = ({
             </span>
             <span>hrs</span>
           </Paper>
-          <Paper elevation={0}>
+          <Paper
+            elevation={0}
+            style={{ marginLeft: '100px', marginRight: '100px' }}
+          >
             <span className={classes.item}>
               {minutes < 10 ? `0${minutes}` : minutes}
             </span>

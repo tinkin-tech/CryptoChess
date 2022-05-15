@@ -16,7 +16,6 @@ import { ReactComponent as Knight } from '../assets/knight.svg';
 import { ReactComponent as Castle } from '../assets/castle.svg';
 import { ReactComponent as Bishop } from '../assets/bishop.svg';
 import { ReactComponent as Pawn } from '../assets/pawn.svg';
-import { height } from '@mui/system';
 import { ArrowForward } from '@material-ui/icons';
 
 interface TabPanelProps {
