@@ -146,3 +146,7 @@ body {
   animation: orbit3 10s linear infinite;
   transition: ease 0.5s;
 }
+
+.MuiDialogContent-root .MuiList-root > li {
+  background-color: #ffffff;
+}
