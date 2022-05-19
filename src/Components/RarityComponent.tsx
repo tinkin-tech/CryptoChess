@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: 1009,
   },
   tabs: {
-    margin: '0 auto',
+    margin: '0px 60px',
     backgroundColor: '#FFFFFF',
     '& .MuiTabs-indicator': {
       backgroundColor: '#2B434F',

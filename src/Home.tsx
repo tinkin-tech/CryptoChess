@@ -493,9 +493,14 @@ const Home = (props: HomeProps) => {
     margin: 0,
   }));
 
-  const TitleBox = styled(Box)(() => ({
+  const TitleBox = styled(Box)({
     maxWidth: '50%',
-  }));
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    minHeight:'800px'
+  });
 
   const useStyles = makeStyles((theme: Theme) => ({
     title: {
@@ -905,8 +910,8 @@ const Home = (props: HomeProps) => {
               Rarity
             </Typography>
           </Grid>
-          <Grid item style={{ width: '100%' }}>
-            <RarityContainer>
+          <Grid item style={{ width: '100%'}}>
+            <RarityContainer maxWidth={false}>
               <RarityComponent />
             </RarityContainer>
           </Grid>
